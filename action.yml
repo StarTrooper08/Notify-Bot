@@ -1,0 +1,15 @@
+name: 'Maintainer Helper'
+description: 'Maintainer Friendly Github Action'
+author: '[Atharva Shirdhankar]'
+
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub token'
+    required: true
+  TENOR_TOKEN:
+    description: 'Tenor API token'
+    required: true
+
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
