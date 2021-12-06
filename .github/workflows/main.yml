@@ -16,17 +16,3 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           TENOR_TOKEN: ${{secrets.TENOR_TOKEN}}
           
-  build:
-        name: Lint Code Job
-        runs-on: ubuntu-latest
-        steps: 
-          - name: Lint Code Steps
-          - uses: actions/checkout@v2
-          - with:
-                fetch-depth: 0
-          - name: Lint Action
-          - uses: github/super-linter@v3
-          - env: 
-              VALIDATE_ALL_CODEBASE: false
-              DEFAULT_BRANCHES: master
-              GITHUB_TOKEN: $ {{ secrets.GITHUB_TOKEN }}
