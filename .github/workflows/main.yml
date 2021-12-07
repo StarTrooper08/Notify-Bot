@@ -10,8 +10,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Lint Code Base
       - uses: actions/checkout@v2
+      - uses: github/super-linter@v4
       - uses: ./
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           TENOR_TOKEN: ${{secrets.TENOR_TOKEN}}
+          
+          
+    
+
