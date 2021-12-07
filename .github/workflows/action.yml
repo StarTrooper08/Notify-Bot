@@ -3,7 +3,7 @@ name: Notify Bot
 on:
   pull_request:
       branches: [ master , main ] 
-      types: [opened]
+      types: [opened,closed]
   issues:
       types: [opened]
   
@@ -44,5 +44,12 @@ jobs:
       with:
         args: '{\"channel\":\"C01RXA18WJE\",\"blocks\":[{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Github Issue:* ${{ github.event.issue.title }}\"}},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Contributor Github Username:* ${{ github.event.issue.user.login }}\n*Issue State:* ${{ github.event.issue.state }}\"}},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"<${{ github.event.issue.html_url }}|View Pull Request>\"}}]}'
 
-    
+  merge_job:
+    # this job will only run if the PR has been merged
+     if: github.event.pull_request.merged == true
+     runs-on: ubuntu-latest
+     steps:
+     - run: |
+        echo PR #${{ github.event.number }} has been merged
+
 
