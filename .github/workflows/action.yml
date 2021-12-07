@@ -9,7 +9,7 @@ on:
   
 
 jobs:
-  test:
+  Greet:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
           
 
   notifyPR:
-    if: ${{github.event.pull_request.opened == true}}
+    if: ${{github.event.pull_request.opened == 'true'}}
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +33,7 @@ jobs:
 
 
   notifyissue:
-    if: ${{github.event.issue.opened == true}}
+    if: ${{github.event.issue.opened == 'true'}}
     runs-on: ubuntu-latest
 
     steps:
