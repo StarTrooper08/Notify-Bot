@@ -33,7 +33,7 @@ jobs:
 
 
   notifySlack-issue:
-    if: github.event.issues.opened == true
+    
     runs-on: ubuntu-latest
 
     steps:
