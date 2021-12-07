@@ -2,23 +2,24 @@ name: Lint Code Base
 
 on: 
    push: 
-      branches-ignore: [main]
+      branches-ignore: [master]
    pull_request: 
-      branches: [main]
+      branches: [master]
    
 
 jobs:
     build:
         name: Lint Code Job
         runs-on: ubuntu-latest
+        
         steps: 
-          - name: Lint Code Steps
-            uses: actions/checkout@v2
+          - name: checkout code
+            uses: actions/checkout@v2.4.0
             with:
                 fetch-depth: 0
           - name: Lint Action
-            uses: github/super-linter@v3
+            uses: github/super-linter@v4.8.4
             env: 
               VALIDATE_ALL_CODEBASE: false
-              DEFAULT_BRANCHES: master
+              DEFAULT_BRANCH: master
               GITHUB_TOKEN: $ {{ secrets.GITHUB_TOKEN }}
