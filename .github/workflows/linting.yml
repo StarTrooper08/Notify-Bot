@@ -1,27 +1,28 @@
-name: Lint Code Base
+name: Lint
 
-on: 
-   push: 
-      branches-ignore: 
-         - master
-   pull_request: 
-      branches: 
-         - master
-   
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-    build:
-        name: Lint Code Job
-        runs-on: ubuntu-latest
-        
-        steps: 
-          - name: checkout code
-            uses: actions/checkout@v2.4.0
-            with:
-                fetch-depth: 0
-          - name: Lint Action
-            uses: github/super-linter@v2.1.1
-            env: 
-              VALIDATE_ALL_CODEBASE: false
-              DEFAULT_BRANCH: master
-              GITHUB_TOKEN: $ {{ secrets.GITHUB_TOKEN }}
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      # Install your linters here
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          eslint: true
+          prettier: true
