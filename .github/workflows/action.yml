@@ -20,9 +20,9 @@ jobs:
           
 
   notifyPR:
-    if: ${{github.event.pull_request.opened == 'true'}}
+    
     runs-on: ubuntu-latest
-
+    if: ${{github.event.pull_request.opened == true}}
     steps:
     - name: Notify slack about PR
       env:
@@ -33,9 +33,9 @@ jobs:
 
 
   notifyissue:
-    if: ${{github.event.issue.opened == 'true'}}
+    
     runs-on: ubuntu-latest
-
+    if: ${{github.event.issue.opened == true}}
     steps:
     - name: Notify slack about issue
       env:
